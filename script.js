@@ -124,26 +124,49 @@ document.querySelectorAll('.stat-card, .feature-card, .amenity-item, .location-c
     observer.observe(el);
 });
 
-// Form handling with EmailJS
+// Show success message if form was submitted
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('success') === 'true') {
+    const successDiv = document.getElementById('form-success');
+    if (successDiv) {
+        successDiv.style.display = 'block';
+        // Scroll to the form
+        document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+        // Hide success message after 10 seconds
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 10000);
+    }
+}
+
+// Form handling
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const moveDate = document.getElementById('move-date').value;
-        const inquiryType = document.getElementById('inquiry-type').value;
-        const message = document.getElementById('message').value;
-        
-        // Validation
-        if (!name || !email || !phone || !moveDate || !inquiryType) {
-            alert('Please fill in all required fields.');
-            return;
+    // Add date format helper text
+    const moveDateInput = document.getElementById('move-date');
+    
+    // Format date input as user types
+    moveDateInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
         }
-        
+        if (value.length >= 5) {
+            value = value.slice(0, 5) + '/' + value.slice(5, 9);
+        }
+        e.target.value = value;
+    });
+    
+    // Validate date on blur
+    moveDateInput.addEventListener('blur', function() {
+        const datePattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/2025$/;
+        if (this.value && !datePattern.test(this.value)) {
+            alert('Please enter a valid date in MM/DD/2025 format. Property is available from December 1, 2025.');
+        }
+    });
+    
+    contactForm.addEventListener('submit', function(e) {
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         
@@ -151,40 +174,7 @@ if (contactForm) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        // Create mailto link with all the information
-        const subject = encodeURIComponent(`Rental Inquiry for 2020 Jasmine Crescent - ${inquiryType}`);
-        const body = encodeURIComponent(`
-RENTAL INQUIRY - 2020 JASMINE CRESCENT
-
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Desired Move-in Date: ${moveDate}
-Inquiry Type: ${inquiryType}
-
-Message:
-${message}
-
----
-This inquiry was submitted through the rental website.
-        `);
-        
-        // Open default email client
-        window.location.href = `mailto:?subject=${subject}&body=${body}`;
-        
-        // Reset form and show success message
-        setTimeout(() => {
-            submitBtn.textContent = 'Message Sent!';
-            submitBtn.style.background = '#48bb78';
-            
-            setTimeout(() => {
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-                alert('Your email client has opened with the rental inquiry. Please send the email to complete your request.');
-            }, 2000);
-        }, 1000);
+        // Form will submit normally to Web3Forms
     });
 }
 
