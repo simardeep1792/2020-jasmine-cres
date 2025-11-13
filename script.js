@@ -127,63 +127,30 @@ document.querySelectorAll('.stat-card, .feature-card, .amenity-item, .location-c
 // Form handling
 const contactForm = document.getElementById('contact-form');
 
-// Update this with your Formspree endpoint
-// You'll need to sign up at https://formspree.io/ to get a form ID
-// Replace 'YOUR_FORM_ID' with the actual ID you get from Formspree
-const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+// Using a working Formspree endpoint
+const FORMSPREE_URL = 'https://formspree.io/f/mnqwrqpn';
 
 // Update the form action
 if (contactForm) {
     contactForm.action = FORMSPREE_URL;
     
+    // Simple form validation
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        const name = this.querySelector('[name="name"]').value;
+        const email = this.querySelector('[name="email"]').value;
+        const phone = this.querySelector('[name="phone"]').value;
+        const inquiryType = this.querySelector('[name="inquiry-type"]').value;
         
+        if (!name || !email || !phone || !inquiryType) {
+            e.preventDefault();
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Let the form submit normally to Formspree
         const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Show loading state
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        
-        // Submit form
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this),
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                // Success
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = '#48bb78';
-                this.reset();
-                
-                // Show success message
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                    alert('Thank you for your interest! We will contact you soon.');
-                }, 3000);
-            } else {
-                throw new Error('Form submission failed');
-            }
-        }).catch(error => {
-            // Error
-            submitBtn.textContent = 'Error - Please try again';
-            submitBtn.style.background = '#f56565';
-            submitBtn.disabled = false;
-            
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-            }, 3000);
-            
-            console.error('Error:', error);
-            alert('There was an error submitting your request. Please try again.');
-        });
     });
 }
 

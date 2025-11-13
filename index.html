@@ -323,7 +323,7 @@
                     <p>Fill out this form to schedule a viewing or ask questions</p>
                     
                     <!-- Using Formspree for form handling -->
-                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+                    <form action="https://formspree.io/f/mnqwrqpn" method="POST" id="contact-form">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Your Name" required>
                         </div>
@@ -334,7 +334,8 @@
                             <input type="tel" name="phone" placeholder="Your Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="move-date" placeholder="Desired Move-in Date">
+                            <input type="date" name="move-date" placeholder="Desired Move-in Date" min="2025-12-01">
+                            <label for="move-date" style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.25rem;">Desired Move-in Date (Available from Dec 1, 2025)</label>
                         </div>
                         <div class="form-group">
                             <select name="inquiry-type" required aria-label="Select Inquiry Type">
