@@ -142,18 +142,15 @@ if (contactForm) {
         const dateObj = new Date(moveDate);
         const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         
-        // Create email body
-        const emailBody = `Hello,
+        // Create formatted inquiry text
+        const inquiryText = `RENTAL INQUIRY - 2020 JASMINE CRESCENT
 
-I am interested in the rental property at 2020 Jasmine Crescent.
-
-INQUIRY DETAILS:
-================
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Desired Move-in Date: ${formattedDate}
-Inquiry Type: ${inquiryType}
+Contact Information:
+- Name: ${name}
+- Email: ${email}
+- Phone: ${phone}
+- Desired Move-in Date: ${formattedDate}
+- Inquiry Type: ${inquiryType}
 
 Message:
 ${message}
@@ -161,28 +158,44 @@ ${message}
 Property Details:
 - Address: 2020 Jasmine Crescent, Unit 1014
 - Rent: $2,200/month (all utilities included)
-- Available: November 24, 2025
+- Available: November 24, 2025`;
 
-Best regards,
-${name}`;
-        
-        // Create mailto link - YOU control where emails go
-        const subject = `Rental Inquiry - ${inquiryType} - ${name}`;
-        const mailto = `mailto:YOUR-EMAIL@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-        
-        // Open email client
-        window.location.href = mailto;
-        
-        // Show success message
-        const successDiv = document.getElementById('form-success');
-        successDiv.innerHTML = '<i class="fas fa-check-circle"></i> Your email app has opened. Please click "Send" to submit your inquiry.';
-        successDiv.style.display = 'block';
-        
-        // Reset form after delay
-        setTimeout(() => {
-            this.reset();
-            successDiv.style.display = 'none';
-        }, 10000);
+        // Copy to clipboard
+        navigator.clipboard.writeText(inquiryText).then(function() {
+            // Success
+            const successDiv = document.getElementById('form-success');
+            successDiv.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                <strong>Information Copied!</strong><br>
+                Your inquiry details have been copied to your clipboard.<br>
+                <small>Now email it to: SIMARDEEP.OBEROI@GMAIL.COM</small>
+            `;
+            successDiv.style.display = 'block';
+            
+            // Also show instructions
+            alert('✅ Your rental inquiry has been copied to your clipboard!\n\nNext step: Email it to SIMARDEEP.OBEROI@GMAIL.COM\n\nYou can paste it by pressing Ctrl+V (or Cmd+V on Mac).');
+            
+            // Reset form after delay
+            setTimeout(() => {
+                contactForm.reset();
+                successDiv.style.display = 'none';
+            }, 15000);
+            
+        }).catch(function() {
+            // Fallback if clipboard doesn't work
+            const textarea = document.createElement('textarea');
+            textarea.value = inquiryText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            alert('✅ Your rental inquiry has been copied!\n\nNext step: Email it to SIMARDEEP.OBEROI@GMAIL.COM\n\nPress Ctrl+V (or Cmd+V on Mac) to paste it in your email.');
+            
+            const successDiv = document.getElementById('form-success');
+            successDiv.innerHTML = '<i class="fas fa-check-circle"></i> Information copied! Email it to: SIMARDEEP.OBEROI@GMAIL.COM';
+            successDiv.style.display = 'block';
+        });
     });
 }
 

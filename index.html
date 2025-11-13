@@ -23,6 +23,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -322,7 +325,7 @@
                     <h3>Express Interest</h3>
                     <p>Fill out this form to schedule a viewing or ask questions</p>
                     
-                    <!-- Simple form that creates an email link -->
+                    <!-- Contact form using simple alert method -->
                     <form id="contact-form">
                         <div class="form-group">
                             <input type="text" name="name" id="name" placeholder="Your Name" required>
@@ -352,6 +355,20 @@
                         
                         <button type="submit" class="btn btn-primary btn-block">Send Inquiry</button>
                     </form>
+                    
+                    <!-- Contact instructions -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: #e3f2fd; border-radius: 10px; border-left: 4px solid var(--accent-color);">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">
+                            <i class="fas fa-info-circle"></i> How to Submit Your Inquiry
+                        </h4>
+                        <p style="margin-bottom: 1rem; color: var(--text-dark);">
+                            After filling out the form above, click "Send Inquiry" to copy your information. 
+                            Then email it to: <strong>SIMARDEEP.OBEROI@GMAIL.COM</strong>
+                        </p>
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">
+                            This ensures you get a quick response while keeping our contact information private.
+                        </p>
+                    </div>
                     
                     
                     <div id="form-success" style="display: none; background: #48bb78; color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem; text-align: center;">
