@@ -139,45 +139,6 @@ if (urlParams.get('success') === 'true') {
     }
 }
 
-// Form handling
-const contactForm = document.getElementById('contact-form');
-
-if (contactForm) {
-    // Add date format helper text
-    const moveDateInput = document.getElementById('move-date');
-    
-    // Format date input as user types
-    moveDateInput.addEventListener('input', function(e) {
-        let value = e.target.value.replace(/\D/g, '');
-        if (value.length >= 2) {
-            value = value.slice(0, 2) + '/' + value.slice(2);
-        }
-        if (value.length >= 5) {
-            value = value.slice(0, 5) + '/' + value.slice(5, 9);
-        }
-        e.target.value = value;
-    });
-    
-    // Validate date on blur
-    moveDateInput.addEventListener('blur', function() {
-        const datePattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/2025$/;
-        if (this.value && !datePattern.test(this.value)) {
-            alert('Please enter a valid date in MM/DD/2025 format. Property is available from December 1, 2025.');
-        }
-    });
-    
-    contactForm.addEventListener('submit', function(e) {
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        // Show loading state
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
-        
-        // Form will submit normally to Web3Forms
-    });
-}
-
 // Counter animation for stats
 function animateCounter(element, target) {
     let current = 0;
