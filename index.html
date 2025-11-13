@@ -331,6 +331,24 @@
                     <p class="form-note">
                         <i class="fas fa-lock"></i> Your information is secure and will only be used for rental inquiries
                     </p>
+                    
+                    <!-- Legal Terms -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-light); border-radius: 10px; font-size: 0.9rem; color: var(--text-light);">
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; font-size: 1rem;">Important Information</h4>
+                        <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.6;">
+                            <li>All applications subject to credit and reference checks</li>
+                            <li>First and last month's rent required upon lease signing</li>
+                            <li>Proof of income (2.5x monthly rent minimum) required</li>
+                            <li>No smoking and no pets policy strictly enforced</li>
+                            <li>Property shown by appointment only - no walk-ins</li>
+                            <li>All information provided subject to verification</li>
+                            <li>Rental rates and availability subject to change without notice</li>
+                            <li>Equal opportunity housing - we do not discriminate</li>
+                        </ul>
+                        <p style="margin-top: 1rem; margin-bottom: 0; font-style: italic;">
+                            By submitting an inquiry, you acknowledge you have read and understand these terms.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -339,10 +357,92 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="margin-bottom: 1rem;">
+                    <a href="#privacy-modal" onclick="document.getElementById('privacy-modal').style.display='block'" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.8;">Privacy Policy</a>
+                    <a href="#terms-modal" onclick="document.getElementById('terms-modal').style.display='block'" style="color: white; text-decoration: none; margin: 0 1rem; opacity: 0.8;">Terms & Conditions</a>
+                </div>
+            </div>
             <p>&copy; 2025 2020 Jasmine Crescent. All rights reserved.</p>
             <p class="footer-address">2020 Jasmine Crescent, Gloucester, ON K1J 8K5</p>
+            <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+                Licensed rental property in Ontario, Canada. Equal opportunity housing.
+            </p>
         </div>
     </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);">
+        <div style="background-color: white; margin: 5% auto; padding: 2rem; width: 90%; max-width: 600px; border-radius: 15px; max-height: 80vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="margin: 0; color: var(--primary-color);">Privacy Policy</h3>
+                <button onclick="document.getElementById('privacy-modal').style.display='none'" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div style="line-height: 1.6; color: var(--text-dark);">
+                <h4>Information Collection</h4>
+                <p>We collect personal information only when you voluntarily provide it through our inquiry form, including your name, email, phone number, and rental preferences.</p>
+                
+                <h4>Information Use</h4>
+                <p>Your information is used solely for:</p>
+                <ul>
+                    <li>Processing your rental inquiry</li>
+                    <li>Scheduling property viewings</li>
+                    <li>Conducting background and credit checks (with consent)</li>
+                    <li>Communicating about the rental process</li>
+                </ul>
+                
+                <h4>Information Sharing</h4>
+                <p>We do not sell, trade, or share your personal information with third parties except as required for rental applications (credit agencies, references) or as required by law.</p>
+                
+                <h4>Data Security</h4>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h4>Contact</h4>
+                <p>For privacy concerns, please contact us through the inquiry form on this website.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="terms-modal" style="display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);">
+        <div style="background-color: white; margin: 5% auto; padding: 2rem; width: 90%; max-width: 600px; border-radius: 15px; max-height: 80vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="margin: 0; color: var(--primary-color);">Terms & Conditions</h3>
+                <button onclick="document.getElementById('terms-modal').style.display='none'" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div style="line-height: 1.6; color: var(--text-dark);">
+                <h4>Rental Application Process</h4>
+                <ul>
+                    <li>All applications are processed on a first-come, first-served basis</li>
+                    <li>Credit check and reference verification required</li>
+                    <li>Proof of income (minimum 2.5x monthly rent) mandatory</li>
+                    <li>First and last month's rent required upon lease signing</li>
+                </ul>
+                
+                <h4>Property Rules</h4>
+                <ul>
+                    <li>No smoking anywhere on the property</li>
+                    <li>No pets allowed</li>
+                    <li>Property viewings by appointment only</li>
+                    <li>All visitors must be accompanied by residents</li>
+                </ul>
+                
+                <h4>Rental Terms</h4>
+                <ul>
+                    <li>Minimum 12-month lease required</li>
+                    <li>Rent includes heat, hydro, and water</li>
+                    <li>One designated parking space included</li>
+                    <li>Rental rates subject to change without notice</li>
+                </ul>
+                
+                <h4>Legal</h4>
+                <p>This property is governed by the Ontario Residential Tenancies Act. We are an equal opportunity housing provider and do not discriminate based on race, religion, gender, sexual orientation, disability, or family status.</p>
+                
+                <h4>Disclaimer</h4>
+                <p>While we strive for accuracy, all information is subject to verification and change. Photos and descriptions are for informational purposes only.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
