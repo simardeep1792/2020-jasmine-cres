@@ -132,6 +132,8 @@ if (contactForm) {
         const submitBtn = this.querySelector('button[type="submit"]');
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
+        
+        // Form will submit to Getform.io
     });
 }
 

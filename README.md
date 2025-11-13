@@ -11,6 +11,16 @@ A modern, responsive website for showcasing a premium 2-bedroom condo rental pro
 - 📧 Privacy-protected contact form
 - 📄 Downloadable rental application (Form 410)
 
+## How the Contact Form Works
+
+The contact form uses Getform.io (free service) to handle submissions. When someone fills out the form:
+1. They enter their information
+2. Click "Send Inquiry"
+3. Form data is sent to Getform
+4. You receive an email notification with their details
+
+No personal contact information is displayed on the website.
+
 ## Setup Instructions
 
 1. **Fork or Clone this Repository**
