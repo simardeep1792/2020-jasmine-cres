@@ -124,19 +124,15 @@ document.querySelectorAll('.stat-card, .feature-card, .amenity-item, .location-c
     observer.observe(el);
 });
 
-// Show success message if form was submitted
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('success') === 'true') {
-    const successDiv = document.getElementById('form-success');
-    if (successDiv) {
-        successDiv.style.display = 'block';
-        // Scroll to the form
-        document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
-        // Hide success message after 10 seconds
-        setTimeout(() => {
-            successDiv.style.display = 'none';
-        }, 10000);
-    }
+// Handle form submission
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+    });
 }
 
 // Counter animation for stats
