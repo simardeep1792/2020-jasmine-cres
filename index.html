@@ -313,66 +313,19 @@
                         <li><i class="fas fa-times"></i> No smoking</li>
                     </ul>
                     
-                    <div class="download-section">
-                        <h4>Download Official Application</h4>
-                        <a href="assets/Form 410.pdf" class="btn btn-download" download>
-                            <i class="fas fa-download"></i> Download Form 410
-                        </a>
-                    </div>
                 </div>
                 
                 <div class="apply-form">
                     <h3>Express Interest</h3>
-                    <p>Fill out this form to schedule a viewing or ask questions</p>
                     
-                    <!-- Contact form using simple alert method -->
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="move-date" style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.5rem; display: block;">Desired Move-in Date</label>
-                            <input type="date" name="move_date" id="move-date" min="2025-11-24" required style="cursor: pointer;">
-                            <small style="color: var(--text-light); display: block; margin-top: 0.25rem;">Available from November 24, 2025</small>
-                        </div>
-                        <div class="form-group">
-                            <select name="inquiry_type" id="inquiry-type" required>
-                                <option value="">Select Inquiry Type</option>
-                                <option value="Schedule Viewing">Schedule Viewing</option>
-                                <option value="Submit Application">Submit Application</option>
-                                <option value="Ask a Question">Ask a Question</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" rows="4" placeholder="Tell us about yourself or ask questions"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-block">Send Inquiry</button>
-                    </form>
-                    
-                    <!-- Contact instructions -->
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: #e3f2fd; border-radius: 10px; border-left: 4px solid var(--accent-color);">
-                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">
-                            <i class="fas fa-info-circle"></i> How to Submit Your Inquiry
-                        </h4>
-                        <p style="margin-bottom: 1rem; color: var(--text-dark);">
-                            After filling out the form above, click "Send Inquiry" to copy your information. 
-                            Then email it to: <strong>SIMARDEEP.OBEROI@GMAIL.COM</strong>
+                    <!-- Google Form Embed -->
+                    <div style="text-align: center;">
+                        <a href="https://forms.gle/YT9zqWjGYgeDwdLB6" target="_blank" class="btn btn-primary btn-block" style="font-size: 1.1rem; padding: 1.25rem;">
+                            <i class="fas fa-file-alt"></i> Fill Out Rental Inquiry Form
+                        </a>
+                        <p style="margin-top: 1rem; color: var(--text-light);">
+                            Click above to open our secure inquiry form in a new window
                         </p>
-                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">
-                            This ensures you get a quick response while keeping our contact information private.
-                        </p>
-                    </div>
-                    
-                    
-                    <div id="form-success" style="display: none; background: #48bb78; color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem; text-align: center;">
-                        <i class="fas fa-check-circle"></i> Thank you! Your inquiry has been sent. We'll contact you soon.
                     </div>
                     
                     <p class="form-note">
