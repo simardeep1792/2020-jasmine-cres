@@ -124,33 +124,67 @@ document.querySelectorAll('.stat-card, .feature-card, .amenity-item, .location-c
     observer.observe(el);
 });
 
-// Form handling
+// Form handling with EmailJS
 const contactForm = document.getElementById('contact-form');
 
-// Using a working Formspree endpoint
-const FORMSPREE_URL = 'https://formspree.io/f/mnqwrqpn';
-
-// Update the form action
 if (contactForm) {
-    contactForm.action = FORMSPREE_URL;
-    
-    // Simple form validation
     contactForm.addEventListener('submit', function(e) {
-        const name = this.querySelector('[name="name"]').value;
-        const email = this.querySelector('[name="email"]').value;
-        const phone = this.querySelector('[name="phone"]').value;
-        const inquiryType = this.querySelector('[name="inquiry-type"]').value;
+        e.preventDefault();
         
-        if (!name || !email || !phone || !inquiryType) {
-            e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const moveDate = document.getElementById('move-date').value;
+        const inquiryType = document.getElementById('inquiry-type').value;
+        const message = document.getElementById('message').value;
+        
+        // Validation
+        if (!name || !email || !phone || !moveDate || !inquiryType) {
             alert('Please fill in all required fields.');
             return;
         }
         
-        // Let the form submit normally to Formspree
         const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        
+        // Show loading state
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
+        
+        // Create mailto link with all the information
+        const subject = encodeURIComponent(`Rental Inquiry for 2020 Jasmine Crescent - ${inquiryType}`);
+        const body = encodeURIComponent(`
+RENTAL INQUIRY - 2020 JASMINE CRESCENT
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Desired Move-in Date: ${moveDate}
+Inquiry Type: ${inquiryType}
+
+Message:
+${message}
+
+---
+This inquiry was submitted through the rental website.
+        `);
+        
+        // Open default email client
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        
+        // Reset form and show success message
+        setTimeout(() => {
+            submitBtn.textContent = 'Message Sent!';
+            submitBtn.style.background = '#48bb78';
+            
+            setTimeout(() => {
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+                alert('Your email client has opened with the rental inquiry. Please send the email to complete your request.');
+            }, 2000);
+        }, 1000);
     });
 }
 

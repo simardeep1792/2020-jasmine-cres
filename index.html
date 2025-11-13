@@ -322,31 +322,31 @@
                     <h3>Express Interest</h3>
                     <p>Fill out this form to schedule a viewing or ask questions</p>
                     
-                    <!-- Using Formspree for form handling -->
-                    <form action="https://formspree.io/f/mnqwrqpn" method="POST" id="contact-form">
+                    <!-- Contact form with reliable email submission -->
+                    <form id="contact-form" method="POST">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <input type="date" name="move-date" placeholder="Desired Move-in Date" min="2025-12-01">
-                            <label for="move-date" style="font-size: 0.9rem; color: var(--text-light); margin-top: 0.25rem;">Desired Move-in Date (Available from Dec 1, 2025)</label>
+                            <label for="move-date" style="font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.5rem; display: block;">Desired Move-in Date (Available from Dec 1, 2025)</label>
+                            <input type="date" id="move-date" name="move-date" min="2025-12-01" required>
                         </div>
                         <div class="form-group">
-                            <select name="inquiry-type" required aria-label="Select Inquiry Type">
+                            <select id="inquiry-type" name="inquiry-type" required aria-label="Select Inquiry Type">
                                 <option value="">Select Inquiry Type</option>
-                                <option value="viewing">Schedule Viewing</option>
-                                <option value="application">Submit Application</option>
-                                <option value="question">Ask a Question</option>
+                                <option value="Schedule Viewing">Schedule Viewing</option>
+                                <option value="Submit Application">Submit Application</option>
+                                <option value="Ask a Question">Ask a Question</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" rows="4" placeholder="Tell us about yourself or ask questions"></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about yourself or ask questions"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Send Message</button>
                     </form>
