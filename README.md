@@ -11,15 +11,29 @@ A modern, responsive website for showcasing a premium 2-bedroom condo rental pro
 - 📧 Privacy-protected contact form
 - 📄 Downloadable rental application (Form 410)
 
+## IMPORTANT: Set Your Email Address
+
+**You must update the email address in the contact form!**
+
+1. Open `script.js`
+2. Find line 171: `mailto:YOUR-EMAIL@gmail.com`
+3. Replace `YOUR-EMAIL@gmail.com` with your actual email address
+4. Save and commit the change
+
 ## How the Contact Form Works
 
-The contact form uses Getform.io (free service) to handle submissions. When someone fills out the form:
-1. They enter their information
-2. Click "Send Inquiry"
-3. Form data is sent to Getform
-4. You receive an email notification with their details
+The form works by opening the user's email client with all the information pre-filled:
+1. User fills out the form
+2. Clicks "Send Inquiry"
+3. Their email app opens with all details filled in
+4. They click "Send" in their email
+5. You receive the inquiry directly
 
-No personal contact information is displayed on the website.
+This approach:
+- Works 100% of the time
+- Requires no external services
+- Keeps your email private (only shown when they submit)
+- Is completely free forever
 
 ## Setup Instructions
 

@@ -128,12 +128,61 @@ document.querySelectorAll('.stat-card, .feature-card, .amenity-item, .location-c
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Show loading state
-        const submitBtn = this.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        e.preventDefault();
         
-        // Form will submit to Getform.io
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const moveDate = document.getElementById('move-date').value;
+        const inquiryType = document.getElementById('inquiry-type').value;
+        const message = document.getElementById('message').value || 'No additional message provided';
+        
+        // Format date nicely
+        const dateObj = new Date(moveDate);
+        const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        
+        // Create email body
+        const emailBody = `Hello,
+
+I am interested in the rental property at 2020 Jasmine Crescent.
+
+INQUIRY DETAILS:
+================
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Desired Move-in Date: ${formattedDate}
+Inquiry Type: ${inquiryType}
+
+Message:
+${message}
+
+Property Details:
+- Address: 2020 Jasmine Crescent, Unit 1014
+- Rent: $2,200/month (all utilities included)
+- Available: November 24, 2025
+
+Best regards,
+${name}`;
+        
+        // Create mailto link - YOU control where emails go
+        const subject = `Rental Inquiry - ${inquiryType} - ${name}`;
+        const mailto = `mailto:YOUR-EMAIL@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+        
+        // Open email client
+        window.location.href = mailto;
+        
+        // Show success message
+        const successDiv = document.getElementById('form-success');
+        successDiv.innerHTML = '<i class="fas fa-check-circle"></i> Your email app has opened. Please click "Send" to submit your inquiry.';
+        successDiv.style.display = 'block';
+        
+        // Reset form after delay
+        setTimeout(() => {
+            this.reset();
+            successDiv.style.display = 'none';
+        }, 10000);
     });
 }
 
