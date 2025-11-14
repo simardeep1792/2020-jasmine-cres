@@ -353,8 +353,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 250px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 220px;
     gap: 1rem;
     margin-bottom: 3rem;
 }
@@ -373,6 +373,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gallery-item:nth-child(5) {
+    grid-column: span 2;
+}
+
+.gallery-item:nth-child(10) {
     grid-column: span 2;
 }
 
@@ -838,12 +842,20 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 200px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 180px;
     }
 
     .gallery-item.main {
         grid-column: span 2;
+    }
+
+    .gallery-item:nth-child(5) {
+        grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(10) {
+        grid-column: span 1;
     }
 
     .apply-content {
@@ -862,11 +874,20 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 480px) {
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px;
     }
 
     .gallery-item.main {
-        grid-column: span 1;
+        grid-column: span 2;
+    }
+
+    .gallery-item:nth-child(5) {
+        grid-column: span 2;
+    }
+
+    .gallery-item:nth-child(10) {
+        grid-column: span 2;
     }
 
     .amenities-showcase {
